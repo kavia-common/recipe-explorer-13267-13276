@@ -1,0 +1,18 @@
+<div class="recipe-list">
+  <div *ngIf="loading" class="loading">Loading recipes...</div>
+  <div *ngIf="error" class="error">{{error}}</div>
+  <div class="recipe-grid">
+    <div
+      class="recipe-card"
+      *ngFor="let recipe of recipes"
+      (click)="openRecipe(recipe)"
+    >
+      <img [src]="recipe.imageUrl" alt="{{ recipe.title }}" class="recipe-thumb" />
+      <div class="recipe-title">{{ recipe.title }}</div>
+      <div class="recipe-desc">{{ recipe.description }}</div>
+    </div>
+  </div>
+  <div *ngIf="!loading && !error && recipes?.length === 0" class="empty-msg">
+    No recipes found.
+  </div>
+</div>

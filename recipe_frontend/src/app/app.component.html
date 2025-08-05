@@ -1,3 +1,21 @@
-<div class="container">
-  <h1>{{ title }}</h1>
-</div>
+<nav class="navbar">
+  <div class="navbar-brand">Recipe Explorer</div>
+  <div class="navbar-links">
+    <a routerLink="/recipes" routerLinkActive="active">Home</a>
+    <a routerLink="/favorites" routerLinkActive="active">Favorites</a>
+    <a routerLink="/login" routerLinkActive="active">Login</a>
+    <a routerLink="/register" routerLinkActive="active">Register</a>
+  </div>
+</nav>
+<header class="search-bar">
+  <input
+    type="text"
+    placeholder="Search recipes..."
+    [(ngModel)]="searchTerm"
+    (keyup.enter)="onSearch()"
+  />
+  <button (click)="onSearch()" title="Search">🔍</button>
+</header>
+<main class="container">
+  <router-outlet></router-outlet>
+</main>

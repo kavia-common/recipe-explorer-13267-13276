@@ -1,0 +1,18 @@
+<div class="favorites-list">
+  <div *ngIf="loading" class="loading">Loading favorites...</div>
+  <div *ngIf="error" class="error">{{error}}</div>
+  <div class="favorites-grid">
+    <div class="recipe-card" *ngFor="let recipe of favorites">
+      <img [src]="recipe.imageUrl" alt="{{ recipe.title }}" class="recipe-thumb" (click)="openRecipe(recipe)" />
+      <div class="recipe-title">{{ recipe.title }}</div>
+      <div>
+        <button class="remove-btn" (click)="removeFavorite(recipe)">
+          Remove
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!loading && favorites?.length === 0" class="empty-msg">
+    No favorite recipes yet.
+  </div>
+</div>

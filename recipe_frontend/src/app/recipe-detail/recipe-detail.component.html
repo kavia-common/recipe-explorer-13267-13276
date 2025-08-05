@@ -1,0 +1,13 @@
+<div class="detail-card" *ngIf="!loading && recipe">
+  <img [src]="recipe.imageUrl" alt="{{ recipe.title }}" class="detail-thumb" />
+  <section>
+    <h2>{{ recipe.title }}</h2>
+    <button (click)="toggleFavorite()" [disabled]="favoriteLoading">
+      {{ recipe.isFavorite ? '★ Remove from Favorites' : '☆ Add to Favorites' }}
+    </button>
+    <div class="description">{{ recipe.description }}</div>
+    <!-- More recipe details (ingredients, steps, etc.) can go here -->
+  </section>
+</div>
+<div class="loading" *ngIf="loading">Loading recipe details...</div>
+<div class="error" *ngIf="error">{{error}}</div>
